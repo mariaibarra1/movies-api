@@ -11,6 +11,7 @@ var app = express();
 
 require('dotenv').config();
 
+var cors = require('cors')
 
 var mongoose = require('mongoose');
 
@@ -22,6 +23,8 @@ mongoose.connect(process.env.DB_URI,{useNewUrlParser: true, useUnifiedTopology:t
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
